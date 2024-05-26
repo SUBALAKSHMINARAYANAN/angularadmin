@@ -1,0 +1,68 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body"></div>
+    </div>
+  </div>
+<!-- src/app/orders/orders.component.html -->
+<div class="tabs">
+    <button (click)="switchStatus('New')">New</button>
+    <button (click)="switchStatus('Pending')">Pending</button>
+    <button (click)="switchStatus('Completed')">Completed</button>
+  </div>
+  
+  <div class="tables">
+    <div *ngIf="currentStatus === 'New'" class="table new">
+      <h2>New Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of filteredOrders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="currentStatus === 'Pending'" class="table pending">
+      <h2>Pending Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of filteredOrders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="currentStatus === 'Completed'" class="table completed">
+      <h2>Completed Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of filteredOrders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

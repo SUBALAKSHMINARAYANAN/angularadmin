@@ -1,0 +1,69 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">ADD OFFERS</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="OfferForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-lg-2 col-md-6">
+                <label>Offer Type</label>
+                <div class="row ml-3">
+                  <div class="col-6">
+                    <input type="checkbox" formControlName="offerType" (change)="onOfferTypeChange($event)" value="Offer" class="form-check-input" id="OfferType">
+                    <label for="OfferType" class="form-check-label">Offer</label>
+                  </div>
+                  <div class="col-6">
+                    <input type="checkbox" formControlName="offerType" (change)="onOfferTypeChange($event)" value="Coupon" class="form-check-input" id="OfferType1">
+                    <label for="OfferType1" class="form-check-label">Coupon</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="OfferName">Offer Name</label>
+                <input type="text" formControlName="OfferName" class="form-control" id="OfferName" placeholder="Enter Offer name">
+                <div *ngIf="OfferForm.get('OfferName')?.invalid && OfferForm.get('OfferName')?.touched" class="text-danger">
+                  Offer Name is required.
+                </div>
+              </div>
+              
+              <div *ngIf="isCouponSelected" class="form-group col-lg-4 col-md-6">
+                <label for="CouponCode">Coupon Code</label>
+                <input type="text" formControlName="CouponCode" class="form-control" id="CouponCode" placeholder="Enter Coupon Code" (input)="transformToUpperCase()">
+                <div *ngIf="OfferForm.get('CouponCode')?.invalid && OfferForm.get('CouponCode')?.touched" class="text-danger">
+                  Coupon Code is required.
+                </div>
+              </div>
+              <div class="form-group col-lg-2 col-md-3">
+                <label for="actualprice">Offer Percentage</label>
+                <input type="number" formControlName="actualprice" class="form-control" id="actualprice"
+                  placeholder="Enter Offer Percentage">
+              </div>
+              <!-- <div class="form-group col-lg-2 col-md-3">
+                <label for="offerprice">Offer Price</label>
+                <input type="number" formControlName="offerprice" class="form-control" id="offerprice"
+                  placeholder="Enter offer price">
+              </div>       -->
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="ValidFrom">Offer Valid From</label>
+                <input type="date" formControlName="ValidFrom" class="form-control" id="ValidFrom">
+              </div> 
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="ValidTo">Offer Valid To</label>
+                <input type="date" formControlName="ValidTo" class="form-control" id="ValidTo">
+              </div>          
+            </div>
+            <button type="submit" [disabled]="OfferForm.invalid" class="btn btn-success mb-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
