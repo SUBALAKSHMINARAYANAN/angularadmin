@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -35,10 +35,6 @@ export class HttpService {
   
   InsertCategory(categoryData: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}Categories`, categoryData);
-  }
-   saveProduct(productData: any): Observable<any> {
-    // return this.http.post<any>(`${environment.apiUrl}Products`, productData, { headers: this.headers });
-     return this.http.post<any>(`${environment.apiUrl}Products`, productData);
   }
 
   

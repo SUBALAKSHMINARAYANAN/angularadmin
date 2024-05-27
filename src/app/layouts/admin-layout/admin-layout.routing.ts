@@ -11,6 +11,12 @@ import {CategoryComponent} from '../../pages/category/category.component';
 import {CustomerComponent} from '../../pages/customer/customer.component';
 import {StaffspageComponent} from '../../pages/staffspage/staffspage.component';
 import {AddstaffComponent} from '../../pages/addstaff/addstaff.component';
+import {ProductsComponent} from '../../pages/products/products.component';
+import {AddproductsComponent} from '../../pages/addproducts/addproducts.component';
+import {OffersComponent} from '../../pages/offers/offers.component';
+import {OrdersComponent} from '../../pages/orders/orders.component';
+import {AddoffersComponent} from '../../pages/addoffers/addoffers.component';
+
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
@@ -22,5 +28,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'category',           component: CategoryComponent },
     { path: 'customer',           component: CustomerComponent },
     { path: 'staffspage',           component: StaffspageComponent },
-    { path: 'addstaff',           component: AddstaffComponent }
+    { path: 'addstaff',           component: AddstaffComponent },
+    { path: 'products',           component: ProductsComponent },
+    { path: 'addproducts',           component: AddproductsComponent },
+    { path: 'offers',           component: OffersComponent },
+    { path: 'addoffers',           component: AddoffersComponent },
+    { path: 'orders',           component: OrdersComponent }
 ];

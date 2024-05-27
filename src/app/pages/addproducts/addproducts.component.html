@@ -1,0 +1,78 @@
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">ADD PRODUCTS</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="productName">Product Name</label>
+                <input type="text" formControlName="productName" class="form-control" id="productName" placeholder="Enter product name">
+                <div *ngIf="productForm.get('productName').invalid && productForm.get('productName').touched" class="text-danger">
+                  Product Name is required.
+                </div>
+              </div>
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="ddcategory">Category</label>
+                <select formControlName="ddcategory" (change)="test()" class="form-control" id="ddcategory">
+                  <option value="" disabled selected>Select Category</option>
+                  <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+               </select>
+              </div>
+              <div class="form-group col-lg-2 col-md-3">
+                <label for="actualprice">Actual Price</label>
+                <input type="number" formControlName="actualprice" class="form-control" id="actualprice" placeholder="Enter actual price">
+              </div>
+              <div class="form-group col-lg-2 col-md-3">
+                <label for="offerprice">Offer Price</label>
+                <input type="number" formControlName="offerprice" class="form-control" id="offerprice" placeholder="Enter offer price">
+              </div>
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="ddoffer">Select Offer</label>
+                <select formControlName="ddoffer" class="form-control" id="ddoffer">
+                  <option value="1" >Aadi Offer</option>
+                  <option  value="2"> May Offer</option>
+                  <option  value="3">July Offer</option>
+                </select>
+              </div>
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="offerdate">Offer Ends On</label>
+                <input type="date" formControlName="offerdate" class="form-control" id="offerdate">
+              </div>
+              <div class="form-group col-lg-4 col-md-6">
+                <label for="approxdelivery">Approx. Delivery</label>
+                <input type="number" formControlName="approxdelivery" class="form-control" id="approxdelivery" placeholder="Approx. Delivery Date">
+              </div>
+              <div class="form-group col-lg-6 col-md-12">
+                <label for="description">Description</label>
+                <textarea formControlName="description" class="form-control" id="description" placeholder="Enter description"></textarea>
+                <div *ngIf="productForm.get('description').invalid && productForm.get('description').touched" class="text-danger">
+                  Product Description is required.
+                </div>
+              </div>
+              <div class="form-group col-lg-12 col-md-12">
+                <label for="productImages">Product Images</label>
+                <div class="image-upload-container">
+                  <div class="image-box" *ngFor="let image of images; let i = index">
+                    <input type="file" (change)="onFileSelected($event, i)" accept="image/*" />
+                    <img *ngIf="image" [src]="image" alt="Image preview" />
+                  </div>
+                </div>             
+              </div>
+            </div>
+            <button type="submit" [disabled]="productForm.invalid" class="btn btn-success mb-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

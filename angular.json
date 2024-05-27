@@ -159,7 +159,7 @@
       }
     }
   },
-  "defaultProject": "argon-dashboard-angular",
+  "defaultProject": "OnlineShopping",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"
