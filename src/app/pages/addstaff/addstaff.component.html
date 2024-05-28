@@ -54,14 +54,54 @@
               </div>
             </div>
             
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="role">Role</label>
               <input type="text" formControlName="role" class="form-control" id="role" placeholder="Enter role">
               <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
                 Role is required.
               </div>
+            </div> -->
+
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="role">Role</label>
+              <select formControlName="role" class="form-control" id="role">
+                <option value="">Select a role</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+              </select>
+              <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
+                Role is required.
+              </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button  style="margin-top: 27px;" type="submit" [disabled]="staffForm.invalid" class="btn btn-success mb-4">Submit</button>
+                </div>
+              </div>
             </div>
-            <button type="submit" [disabled]="staffForm.invalid" class="btn btn-success mb-4">Submit</button>
+
+
+
+
+
+            <!-- <div class="form-group">
+              <label for="role">Role</label>
+              <select formControlName="role" class="form-control" id="role">
+                <option value="">Select a role</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+              </select>
+              <div *ngIf="staffForm.get('role').invalid && staffForm.get('role').touched" class="text-danger">
+                Role is required.
+              </div>
+            </div>
+            
+            <button type="submit" [disabled]="staffForm.invalid" class="btn btn-success mb-4">Submit</button> -->
           </form>
         </div>
       </div>

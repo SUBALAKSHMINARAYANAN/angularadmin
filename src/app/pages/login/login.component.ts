@@ -60,41 +60,41 @@ export class LoginComponent implements OnInit {
   
 
 
-  async onSubmit(): Promise<void> 
-  {
+  // async onSubmit(): Promise<void> 
+  // {
    
-    this.submitted = true;
-    if (this.loginform.valid) 
-    {
-      console.log("aaaaa")
-    console.log(this.loginform.value)
-    this.router.navigate(['/dashboard']);
-    }
-      
-
-      
-  }
-
-  // async onSubmit(): Promise<void> {
   //   this.submitted = true;
-
-  //   if (this.loginform.valid) {
-  //     const loginData = {
-  //       userlogin: this.formControl.email.value,
-  //       Password: this.formControl.password.value
-  //     };
-
-  //     try {
-  //       const response = await this.HttpService.login(loginData).toPromise();
-  //       console.log('Login response:', response);
-        
-  //       this.router.navigate(['/dashboard']);
-  //     } catch (error) {
-  //       console.error('Login error:', error);
-        
-  //     }
+  //   if (this.loginform.valid) 
+  //   {
+  //     console.log("aaaaa")
+  //   console.log(this.loginform.value)
+  //   this.router.navigate(['/dashboard']);
   //   }
+      
+
+      
   // }
+
+  async onSubmit(): Promise<void> {
+    this.submitted = true;
+
+    if (this.loginform.valid) {
+      const loginData = {
+        userlogin: this.formControl.email.value,
+        Password: this.formControl.password.value
+      };
+
+      try {
+        const response = await this.HttpService.login(loginData).toPromise();
+        console.log('Login response:', response);
+        
+        this.router.navigate(['/dashboard']);
+      } catch (error) {
+        console.error('Login error:', error);
+        
+      }
+    }
+  }
   
 
   showerror() 
