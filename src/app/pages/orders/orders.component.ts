@@ -36,4 +36,5 @@ export class OrdersComponent implements OnInit {
     this.currentStatus = status;
     this.loadOrders();
   }
+
 }
