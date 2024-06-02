@@ -13,6 +13,8 @@
           </div>  
           <div class="card-body">
             <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6">
               <div class="form-group">
                 <label for="categoryName">Category Name</label>
                 <input type="text" formControlName="categoryName" class="form-control" id="categoryName" placeholder="Enter category name">
@@ -20,6 +22,8 @@
                   Category Name is required.
                 </div>
               </div>
+            </div>
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="description">Description</label>
                 <textarea formControlName="description" class="form-control" id="description" placeholder="Enter description"></textarea>
@@ -27,7 +31,8 @@
                   Description is required.
                 </div>
               </div>
-              
+            </div>
+          </div>
             <!-- <div class="form-group">
               <label for="image">Image</label> 
               <input type="text" formControlName="image" id="image" readonly class="form-control">
@@ -40,6 +45,7 @@
         </div>      
               <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-success mb-4">Update</button>
             </form>
+          
           </div>
         </div>
       </div>

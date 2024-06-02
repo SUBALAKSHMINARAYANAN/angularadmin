@@ -12,6 +12,8 @@
           </div>
           <div class="card-body">
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6">
               <div class="form-group">
                 <label for="Name">Name</label>
                 <input type="text" formControlName="Name" class="form-control" id="Name" placeholder="Enter category name">
@@ -19,6 +21,8 @@
                   Name is required.
                 </div>
               </div>
+            </div>
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="emailId">Email ID</label>
                 <input type="text" formControlName="emailId" class="form-control" id="emailId" placeholder="Enter emailId">
@@ -26,6 +30,8 @@
                   Email ID is required.
                 </div>
               </div>
+            </div>
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="Username">Username</label>
                 <input type="text" formControlName="Username" class="form-control" id="Username" placeholder="Enter Username">
@@ -33,6 +39,7 @@
                     Username is required.
                 </div>
               </div>
+            </div>
               <!-- <div class="form-group">
                 <label for="role">Role</label>
                 <input type="text" formControlName="role" class="form-control" id="role" placeholder="Enter role">
@@ -40,6 +47,7 @@
                   Email ID is required.
                 </div>
               </div> -->
+              <div class="col-md-6">
               <div class="form-group">
                 <label for="role">role</label>
                 <select formControlName="role" (change)="test()" class="form-control" id="role">
@@ -50,6 +58,9 @@
                   Role is required.
                 </div>
               </div>
+              </div>
+            </div>
+
               <button type="submit" [disabled]="userForm.invalid" class="btn btn-success mb-4">Update</button>
             </form>
           </div>
