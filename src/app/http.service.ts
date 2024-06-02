@@ -66,6 +66,9 @@ export class HttpService {
   getcustomer(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}Customers`);
   }
+  getOffers(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}OffersCoupons`);
+  }
   // login(email: string, password: string) {
   //   return this.http.post<any>(`${environment.apiUrl}UserLogin`, { email, password });
   // }

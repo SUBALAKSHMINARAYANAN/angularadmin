@@ -12,6 +12,7 @@ export class EditcategoryComponent implements OnInit {
   categoryForm: FormGroup;
   selectedFileName: string;
   FileName: any;
+  offers: any[] = [];
   constructor(
     private httpService: HttpService,
     private router: Router,
@@ -20,16 +21,28 @@ export class EditcategoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.categoryForm = this.fb.group({
       id: [{ value: '', disabled: true }],
       categoryName: ['', Validators.required],
+      ddoffer: ['', Validators.required],
       description: ['', Validators.required],
       image: ['']
     });
 
     this.bindCategoryDetails();
+    this.fetchOffers();
   }
-
+  fetchOffers() {
+    this.httpService.getOffers().subscribe(
+      (response: any[]) => {
+        this.offers = response;
+      },
+      (error) => {
+        console.error('Error fetching offers:', error);
+      }
+    );
+  }
   // async bindCategoryDetails() {
   //   const categoryId = this.route.snapshot.paramMap.get('id');
   //   if (categoryId) {
@@ -63,6 +76,7 @@ export class EditcategoryComponent implements OnInit {
                 this.categoryForm.patchValue({
                     id: categoryData.id,
                     categoryName: categoryData.name || '', // Handle undefined case
+                    ddoffer: categoryData.offerId,
                     description: categoryData.description,
                     image:categoryData.image,
                     // Don't set the 'image' field here
@@ -115,7 +129,7 @@ export class EditcategoryComponent implements OnInit {
         name: this.categoryForm.get('categoryName')?.value,
         description: this.categoryForm.get('description')?.value,
         image: this.categoryForm.get('image')?.value,
-        offerId: null,
+        offerId: this.categoryForm.get('ddoffer')?.value,
         createdOn: "2024-05-24T02:07:53.677Z",
         createdBy: "0",
         isActive: true,

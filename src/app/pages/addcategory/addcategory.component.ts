@@ -16,12 +16,15 @@ export class AddcategoryComponent implements OnInit {
   imageSrc: string | ArrayBuffer | null = null;
   images: string[] = [null];
   imageFiles: File[] = [null];
+  offers: any[] = [];
 
   constructor(private router: Router,private fb: FormBuilder, private httpService: HttpService,) { }
 
   ngOnInit(): void {
+    this.fetchOffers();
     this.categoryForm = this.fb.group({
       categoryName: ['', Validators.required],
+      ddoffer: ['', Validators.required],
       description: ['', Validators.required],
       image: ['', Validators.required],
     });
@@ -34,11 +37,24 @@ export class AddcategoryComponent implements OnInit {
       
   //   }
   // }
+
+  fetchOffers() {
+    this.httpService.getOffers().subscribe(
+      (response: any[]) => {
+        this.offers = response;
+      },
+      (error) => {
+        console.error('Error fetching offers:', error);
+      }
+    );
+  }
+
   onSubmit() {
     if (this.categoryForm.valid) {
       const categoryData = {
         name: this.categoryForm.get('categoryName')?.value,
         description: this.categoryForm.get('description')?.value,
+        offerId: this.categoryForm.get('ddoffer')?.value,
         image: this.categoryForm.get('image')?.value,
         createdOn: new Date().toISOString(), // Assuming you want to set current date/time
         createdBy: "0", // Assuming default value
